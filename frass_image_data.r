@@ -17,9 +17,6 @@ list_of_files <- list.files(path = ".", recursive = TRUE,
                             pattern = "\\.txt$", 
                             full.names = TRUE)
 
-df1 <- rbindlist(sapply(list_of_files, fread, simplify = FALSE),
-                use.names = TRUE, idcol = "FileName", fill = TRUE)
-
 
 # For loop, read in each file
 
@@ -56,11 +53,20 @@ names(output)[4] = "Particle"
 
 
 
+#End goal is a dataframe like this:
+
+# Site  date      Trap   Particle    Area
+# NCBG  20230612  8B      1          .7
+# NCBG  20230612  8B      2          .538
+# NCBG  20230612  7A      1          .3
 
 
 
 
+# Ella's Attempt
 
+df1 <- rbindlist(sapply(list_of_files, fread, simplify = FALSE),
+                 use.names = TRUE, idcol = "FileName", fill = TRUE)
 
 # delete columns
 df1 = subset(df1, select = -c(7:11) )
@@ -97,15 +103,6 @@ for(i in 1:ncol(list_of_names)) {                                             # 
 df2 <- cbind(df1, Date, Site, Trap)
 
 
-
-
-
-#End goal is a dataframe like this:
-
-# Site  date      Trap   Particle    Area
-# NCBG  20230612  8B      1          .7
-# NCBG  20230612  8B      2          .538
-# NCBG  20230612  7A      1          .3
 
 
 # Trial 1
