@@ -50,6 +50,16 @@ output = output[, c("Site", "Trap", "Date", "X", "Area")]
 output$Date = as.Date(output$Date, format = "%Y-%m-%d")
 names(output)[4] = "Particle"
 
+for (file in filelist){
+  
+  # Add a Volume Column from Area being raised to the 3/2
+  Volume = output[5] ^ (3/2)
+
+} # end loop
+
+output = cbind(output, new_col = Volume)
+names(output)[6] = "Volume"
+
 
 
 
@@ -74,7 +84,7 @@ df1 = subset(df1, select = -c(7:11) )
 # rename columns 
 colnames(df1)[2] ="Number of Frass"
 
-# create site and date columns by splicing name
+# create site and date columns by slicing name
 # new dataframe for only the file name
 list_of_names <- data.table(df1$FileName)
 
