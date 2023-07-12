@@ -8,7 +8,7 @@ library(data.table)
 library(dplyr)
 library(lubridate)
 
-# working directory issue - manually set
+
 setwd("//ad.unc.edu/bio/HurlbertLab/Databases/CaterpillarsCount/Frass/2023/Results")
 
 filelist = list.files()
@@ -107,7 +107,7 @@ df2 <- cbind(df1, Date, Site, Trap)
 # NCBG  20230612  8B      2          .538
 # NCBG  20230612  7A      1          .3
 
-#Tj's attempts
+
 # Trial 1
 tmpfrass <- read.table("20230518_NCBG_1A.txt", sep = '\t', header = T)
 frassdf= data.frame(c("site", "date", "trap", "particle", "area"))
